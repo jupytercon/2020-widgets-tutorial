@@ -44,7 +44,7 @@ If you are not using the anaconda python distribution, please use the instructio
 pip install -r requirements.txt
 
 # Create a kernel for this environment
-ipython kernel install --name widgets-tutorial --display-name widgets-tutorial --sys-prefix
+ipython kernel install --name widgets-jcon20 --display-name widgets-jcon20 --sys-prefix
 ```
 
 ## Install JupyterLab extensions
