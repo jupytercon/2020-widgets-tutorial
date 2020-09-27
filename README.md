@@ -1,42 +1,87 @@
-# JupyterCon Tutorial
+# The Jupyter Widget Ecosystem
 
-[JupyterCon](https://jupytercon.com) will use this template to create a new repository for each tutorial, with speakers added as collaborators. 
+## Tutorial, JupyterCon 2020
 
-We also include here [instructions for tutorial speakers](https://github.com/jupytercon/tutorial2020/blob/master/Tutorial_Speakers_Guide.md). 
-Please follow these instructions carefully, and email us if you have questions: [jupytercon-tutorials@numfocus.org](mailto:jupytercon-tutorials@numfocus.org)
+## Installation on your own computer
 
-You can delete this file (or rename it) and replace it by a README file that targets the contents of this repository, populated with your tutorial materials.
+*You do not have to install the software on your computer to do the tutorial. JupyterCon will provide an environment for going through the materials. Follow these instruction if you want to run it on your computer.*
 
-## Tutorial Chairs for 2020
+The code in the tutorial has been written using Python 3; many of the dependencies may not be available for Python 2.7.
 
-- Tania Allard, Microsoft
-- Gerard Gorman, University College London
+We **strongly recommend** using the Anaconda Python distribution. You can install either the full [anaconda distribution](https://www.continuum.io/downloads) (very extensive, but large) or [miniconda](https://conda.io/miniconda.html) (much smaller, only essential packages).
 
-## General information
+Almost all of the examples will work in either the regular Jupyter notebook or in JupyterLab. The instructions below assume you will be using JupyterLab.
 
-JupyterCon 2020 is an online event that places heavy emphasis on providing learning opportunities for all participants. 
-It is a project of [NumFOCUS](https://numfocus.org), with a fully volunteer team of organizers.
+There are also download instructions below for installation using pip, which should work with any Python distribution.
 
-### What is NumFOCUS?
+## Download this repository
 
-> NumFOCUS is a 501(c)-3 non-profit in the United States. 
-Its mission is to promote open practices in research, data, and scientific computing by serving as a fiscal sponsor for open source projects and organizing community-driven educational programs. 
-NumFOCUS envisions an inclusive scientific and research community that utilizes actively supported open source software to make impactful discoveries for a better world.
+You can do this with either
+`git clone https://github.com/jupytercon/2020-widgets-tutorial` at the command
+line or by downloading this repostiory as a [Zip file](https://github.com/jupytercon/2020-widgets-tutorial/archive/master.zip).
 
-## Format for tutorials
+## conda installation instructions
 
-Tutorials will consist of on-demand video presentations, and written materials presented in Jupyter notebooks. 
-The notebooks should be complete and polished, amply narrated worked-out examples and exercises for participants. 
+The steps below will get you a working environment.
 
-Tutorial basic format:
+```bash
+conda env create -f environment.yml
 
-- Three or four Jupyter notebooks (at minimum), each notebook corresponding to "one lesson" – printed, estimate between 10–20 pages, or 17 to 35 min to read, per notebook.
-- Estimate for the material to be 1.5 to 3 hours to work through interactively.
-- The notebooks are complemented with videos, 25–30 min in length (not longer); at least one video per notebook.
-- Optional exercises for participants, instrumented for auto-grading.
-- One full tutorial may add up to total-time-on-task by the learners of about 4.5 hours.
+conda activate widgets-jcon20
 
-## License
+# Create a kernel for this environment
+ipython kernel install --name widgets-jcon20 --display-name widgets-jcon20 --sys-prefix
+```
 
-The source materials for JupyterCon tutorials are copyright of their authors. 
-We ask that materials be shared under standard public licenses. We recommend code be under BSD-3 or MIT license, and other materials be under a CC-BY Creative Commons Attribution license.
+### Windows users
+The installation instructions were tested on an up-to-date version of Windows 10 Professional. If you encounter any issues on Windows please open an issue or contact us through slack.
+
+## pip installation instructions
+
+If you are not using the anaconda python distribution, please use the instructions below.
+
+```bash
+pip install -r requirements.txt
+
+# Create a kernel for this environment
+ipython kernel install --name widgets-tutorial --display-name widgets-tutorial --sys-prefix
+```
+
+## Install JupyterLab extensions
+
+In order to install the JupyterLab extensions, you need `nodejs` to be installed. If you use `conda` it should have been already installed for you when you created your environment.
+
+
+If you do not use `conda`, see [https://nodejs.org/en/download/](https://nodejs.org/en/download/) or [https://nodejs.org/en/download/package-manager/](https://nodejs.org/en/download/package-manager/) for download and installation instructions.
+
+
+Now you can install the JupyterLab extensions:
+
+```bash
+# This may take several minutes
+jupyter labextension install @jupyter-widgets/jupyterlab-manager @jupyter-widgets/jupyterlab-sidecar bqplot
+```
+
+<!-- **Only if we use them: `ipysheet ipytree`** -->
+
+## Check your installation
+
+To check your installation, please download the script [install_check.py](https://raw.githubusercontent.com/jupytercon/2020-widgets-tutorial/master/install_check.py) and run it:
+
+```bash
+python install_check.py
+```
+
+## Tutorial materials
+
+To get the tutorial materials, clone this repository. *We anticipate making changes to the tutorial content through the end of October 2, 2020.*
+
+To update your copy of the tutorial materials, navigate in a terminal to folder these materials are in then run `git pull`. An alternative is to download the repository again as a zip file.
+
+## Any ipywidgets or custom widgets library question?
+
+Please join us on the Gitter channel: https://gitter.im/jupyter-widgets/Lobby
+
+## Running into trouble?
+
+Please let us know! You can open an issue on this repository by clicking "Issues" under the repo name on GitHub, then the "New Issue" button in the upper right.
